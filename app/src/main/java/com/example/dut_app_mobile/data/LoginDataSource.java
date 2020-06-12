@@ -12,6 +12,7 @@ public class LoginDataSource {
     public Result<LoggedInUser> login(String username, String password) {
 
         try {
+            //call here firebase
             // TODO: handle loggedInUser authentication
             LoggedInUser fakeUser =
                     new LoggedInUser(
