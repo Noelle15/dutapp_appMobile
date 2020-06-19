@@ -3,4 +3,11 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="background">#252323</color>
+    <color name="profile_case">#574D4D</color>
+    <color name="grey">#424549</color>
+    <color name="pink">#7e455e</color>
+    <color name="yellowish">#796e25</color>
+    <color name="green">#597177</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -13,4 +13,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_profile">Profile</string>
+    <string name="profile_pic">profile picture</string>
+    <string name="profile_pseudo">pseudo</string>
+    <string name="temps_lecture">Temps passé en lecture</string>
+    <string name="nb_livres_lus">Livres lus</string>
+    <string name="label_livre">Mes Livres</string>
 </resources>
