@@ -12,7 +12,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_profil">Profil</string>
     <string name="profile_pic">profile picture</string>
     <string name="profile_pseudo">pseudo</string>
     <string name="temps_lecture">Temps passé en lecture</string>
@@ -20,4 +20,6 @@
     <string name="label_livre">Mes Livres</string>
     <string name="livres_lire">Livres à lire</string>
     <string name="prompt_recherche">Recherche</string>
+    <string name="title_livre">Livres</string>
+    <string name="title_decouvrir">Découvrir</string>
 </resources>
