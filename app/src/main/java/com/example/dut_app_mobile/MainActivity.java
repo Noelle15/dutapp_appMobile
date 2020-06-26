@@ -24,7 +24,7 @@ import model.User;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private BDD bdd;
+    private static BDD bdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public static BDD getBdd(){
+        return bdd;
     }
 
 }

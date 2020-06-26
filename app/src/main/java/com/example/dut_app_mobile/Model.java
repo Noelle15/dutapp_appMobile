@@ -10,8 +10,4 @@ public class Model {
     public int getImage_carousel() {
         return image_carousel;
     }
-
-    public void setImage_carousel(int image_carousel) {
-        this.image_carousel = image_carousel;
-    }
 }

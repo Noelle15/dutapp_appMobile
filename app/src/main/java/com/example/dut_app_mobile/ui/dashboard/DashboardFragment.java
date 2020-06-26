@@ -17,9 +17,10 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
+                dashboardViewModel =
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.decouvrir, container, false);
+
         return root;
     }
 }

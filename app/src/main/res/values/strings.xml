@@ -22,4 +22,5 @@
     <string name="prompt_recherche">Recherche</string>
     <string name="title_livre">Livres</string>
     <string name="title_decouvrir">Découvrir</string>
+    <string name="booksNames">booksNames</string>
 </resources>
