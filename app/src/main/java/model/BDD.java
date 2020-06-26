@@ -1,5 +1,6 @@
 package model;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,7 @@ public class BDD {
     private HashMap <String, Book> books;
 
     public BDD(FirebaseFirestore db) {
-        this.db = FirebaseFirestore.getInstance();
+        this.db = db;
         this.books = new HashMap<>();
     }
 
@@ -31,19 +32,20 @@ public class BDD {
     public void getAllBooks(){
         Log.d("USER FIREBASE","Passé");
         db.collection("Book").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    Log.d("USER FIREBASE","Passé2");
+                    Log.d("FIREBASE DOCUMENTS",task.getResult().getDocuments().toString());
 
-                    Log.d("USER FIREBASE",task.getResult().toString());
-                    Log.d("USER FIREBASE",task.getResult().getDocumentChanges().toString());
                     for(QueryDocumentSnapshot doc : task.getResult()){
                         Book book = new Book(doc.getString("title"),doc.getString("author"),
                                 doc.getString("description"),doc.getString("type"));
-                        Log.d("USER FIREBASE","Passé3");
                         books.put(doc.getId(),book);
                     }
+                    Log.d("FIREBASE FIREBASE",books.toString());
+                }else{
+                    Log.d("Error getting documents: ", task.getException().toString());
                 }
             }
         });
