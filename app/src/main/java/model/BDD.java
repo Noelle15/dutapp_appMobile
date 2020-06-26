@@ -30,7 +30,6 @@ public class BDD {
 
 
     public void getAllBooks(){
-        Log.d("USER FIREBASE","Passé");
         db.collection("Book").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @SuppressLint("LongLogTag")
             @Override
