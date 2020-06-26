@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_profil">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_livre"
         android:name="com.example.dut_app_mobile.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/title_livre"
+        tools:layout="@layout/livre" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_decouvrir"
         android:name="com.example.dut_app_mobile.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_decouvrir"
+        tools:layout="@layout/decouvrir" />
 
     <fragment
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigation_profil"
         android:name="com.example.dut_app_mobile.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_profil"
         tools:layout="@layout/profile" />
 </navigation>
