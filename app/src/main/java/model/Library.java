@@ -7,6 +7,7 @@ public class Library {
     private Book book;
     private int grade;
     private String comment;
+    private boolean bookmark;
 
     /**
      * @param book class
