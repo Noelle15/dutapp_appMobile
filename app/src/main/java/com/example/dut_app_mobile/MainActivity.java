@@ -1,26 +1,24 @@
 package com.example.dut_app_mobile;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.dut_app_mobile.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import model.BDD;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -40,15 +38,24 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+
         //Connexion
         mAuth = FirebaseAuth.getInstance();
+        Log.d("USER FIREBASE",mAuth.getCurrentUser().toString());
         mAuth.getCurrentUser();
-        //mAuth.signOut();
         if(mAuth.getCurrentUser()== null){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        };
+        }else{
+            BDD bdd = new BDD(FirebaseFirestore.getInstance());
+            bdd.getAllBooks();
+            Log.d("Map books",bdd.getBooks().toString());
+        }
 
+
+
+
+        //logOut
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
