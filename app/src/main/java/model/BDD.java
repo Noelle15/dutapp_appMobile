@@ -22,12 +22,34 @@ import java.util.Objects;
 public class BDD {
     private FirebaseFirestore db;
     private HashMap <String, Book> books;
+    private static User user;
 
     public BDD(FirebaseFirestore db) {
         this.db = db;
         this.books = new HashMap<>();
+        user = new User();
     }
 
+    public void setUser(final String email, final Callback<User> callback){
+        db.collection("User").document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    BDD.setUser(email,task.getResult().getString("login"));
+                    Log.d("USER LOGIN",task.getResult().getString("login"));
+                    callback.OnCallback(user);
+                }
+            }
+        });
+    }
+    public static void setUser(String email,String login){
+        user.setLogin(login);
+        user.setEmail(email);
+    }
+
+    public static User getUser() {
+        return user;
+    }
 
     public void getAllBooks(){
         db.collection("Book").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -55,22 +77,29 @@ public class BDD {
     }
 
     /**
-     * @param login of User
+     *
      */
-    public void getLibrary(String login){
-        db.collection("Book").whereEqualTo("idUser", login)
+    public void getLibrary(){
+        Log.d("USER Library",user.getEmail());
+        db.collection("User").document(user.getEmail()).collection("Library")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Log.d("USER Library","On complete");
                         if (task.isSuccessful()) {
-                            for(DocumentSnapshot doc : Objects.requireNonNull(task.getResult()).getDocuments()){
+                            Log.d("USER Library","Successfull");
+                            for(QueryDocumentSnapshot doc : task.getResult()){
+                                Log.d("USER Library","create Library");
                                 Library library = new Library(books.get(doc.getString("idBook")),doc.getLong("grade"),
                                         doc.getString("comment"), doc.getBoolean("bookmark"));
+                                user.putLibrary(doc.getString("idBook"),(library));
                             }
                         }
+                        Log.d("USER Library",user.getMyLib().toString());
                     }
                 });
+
     }
 
 }
