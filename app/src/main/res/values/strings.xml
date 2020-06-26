@@ -18,4 +18,6 @@
     <string name="temps_lecture">Temps passé en lecture</string>
     <string name="nb_livres_lus">Livres lus</string>
     <string name="label_livre">Mes Livres</string>
+    <string name="livres_lire">Livres à lire</string>
+    <string name="prompt_recherche">Recherche</string>
 </resources>

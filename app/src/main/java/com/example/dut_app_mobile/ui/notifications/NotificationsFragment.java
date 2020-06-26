@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationsFragment extends Fragment {
-
     ViewPager viewPager;
     com.example.dut_app_mobile.Adapter adapter;
     List<Model> models;
