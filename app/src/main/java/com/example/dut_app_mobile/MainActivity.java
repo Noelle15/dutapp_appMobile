@@ -41,17 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
         //Connexion
         mAuth = FirebaseAuth.getInstance();
-        Log.d("USER FIREBASE",mAuth.getCurrentUser().toString());
+
         mAuth.getCurrentUser();
         if(mAuth.getCurrentUser()== null){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        }else{
+        }
+        /*else{
             BDD bdd = new BDD(FirebaseFirestore.getInstance());
             bdd.getAllBooks();
             Log.d("Map books",bdd.getBooks().toString());
         }
-
+*/
 
 
 
