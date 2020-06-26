@@ -19,9 +19,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import model.BDD;
+import model.Callback;
+import model.User;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private BDD bdd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        // BDD class
+        bdd = new BDD(FirebaseFirestore.getInstance());
+        bdd.getAllBooks();
 
         //Connexion
         mAuth = FirebaseAuth.getInstance();
@@ -47,12 +54,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else{
-            BDD bdd = new BDD(FirebaseFirestore.getInstance());
-            bdd.getAllBooks();
-            Log.d("Map books",bdd.getBooks().toString());
+            bdd.setUser( mAuth.getCurrentUser().getEmail(), new Callback<User>() {
+                @Override
+                public void OnCallback(User user) {
+                    bdd.getLibrary();
+                }
+            });
+
         }
 
-
+        Log.d("Map books",bdd.getBooks().toString());
+        Log.d("MyLib books",bdd.getUser().getMyLib().toString());
 
         //logOut
         btn_logout.setOnClickListener(new View.OnClickListener() {
